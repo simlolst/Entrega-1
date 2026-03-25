@@ -1,2 +1,2 @@
-Nombre: Elias Francisco sosa
+Nombre: Elias Francisco Sosa
 Legajo: 028076/1
