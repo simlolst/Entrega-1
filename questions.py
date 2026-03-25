@@ -1,5 +1,7 @@
 import random
+import string
 
+lower = string.ascii_lowercase # Variable para tener las minúsculas
 words = [
     "python",
     "programa",
@@ -37,19 +39,24 @@ while attempts > 0:
     print(f"Intentos restantes: {attempts}")
     print(f"Letras usadas: {', '.join(guessed)}")
 
-    user_input = input("Ingresá una letra: ").lower() # Agregué .lower() por si escriben en mayúscula
-
-    if user_input in guessed:
-        print("Ya usaste esa letra.")
-    elif user_input in word:
-        guessed.append(user_input)
-        print("¡Bien! Esa letra está en la palabra.")
-    else:
-        guessed.append(user_input)
-        attempts -= 1
-        print("Esa letra no está en la palabra.")
+    user_input = input("Ingresá una letra: ").lower() 
     
-    print("-" * 20) # Separador visual
+    # verificamos que sea 1 sola letra Y que esté en el abecedario
+    if len(user_input) == 1 and user_input in lower:
+        if user_input in guessed:
+            print("Ya usaste esa letra.")
+        elif user_input in word:
+            guessed.append(user_input)
+            print("¡Bien! Esa letra está en la palabra.")
+        else:
+            guessed.append(user_input)
+            attempts -= 1
+            print("Esa letra no está en la palabra.")
+    else:
+        # Se ejecuta si ingresan números, símbolos o más de una letra junta
+        print("Entrada no válida")
+        
+    print("-" * 20)
 
 else:
     print(f"¡Perdiste! La palabra era: {word}")
